@@ -1,25 +1,50 @@
 version: '2'
 services:
-  kanboard:
-    image: kanboard/kanboard:latest
+  quantar_bridge_1994:
+    image: quantar_bridge
     ports:
-      - "80:80"
-      - "443:443"
+      - "34103:34103"
+      - "35100:35100"
+      - "1994:1994"
     volumes:
-      - ./kanboard/etc/config.php:/var/www/app/config.php
-      - ./kanboard/data:/var/www/app/data
-      - ./kanboard/plugins:/var/www/app/plugins
-      - ./kanboard/ssl:/etc/nginx/ssl
-    environment:
-      DATABASE_URL: mysql://kb:kb-secret@db/kanboard
-      PLUGIN_INSTALLER: 'true'
-  db:
-    image: mariadb:latest
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: kanboard
-      MYSQL_USER: kb
-      MYSQL_PASSWORD: kb-secret
+      - ./etc/quantar_bridge.ini:/opt/dvswitch/Quantar_Bridge.ini
+  quantar_bridge_1995:
+    image: quantar_bridge
+    ports:
+      - "34104:34103"
+      - "35101:35100"
+      - "1995:1994"
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./etc/quantar_bridge.ini:/opt/dvswitch/Quantar_Bridge.ini
+  quantar_bridge_1996:
+    image: quantar_bridge
+    ports:
+      - "34105:34103"
+      - "35102:35100"
+      - "1996:1994"
+    volumes:
+      - ./etc/quantar_bridge.ini:/opt/dvswitch/Quantar_Bridge.ini
+  quantar_bridge_1997:
+    image: quantar_bridge
+    ports:
+      - "34106:34103"
+      - "35103:35100"
+      - "1997:1994"
+    volumes:
+      - ./etc/quantar_bridge.ini:/opt/dvswitch/Quantar_Bridge.ini
+  quantar_bridge_1998:
+    image: quantar_bridge
+    ports:
+      - "34107:34103"
+      - "35104:35100"
+      - "1998:1994"
+    volumes:
+      - ./etc/quantar_bridge.ini:/opt/dvswitch/Quantar_Bridge.ini
+  quantar_bridge_1999:
+    image: quantar_bridge
+    ports:
+      - "34108:34103"
+      - "35105:35100"
+      - "1999:1994"
+    volumes:
+      - ./etc/quantar_bridge.ini:/opt/dvswitch/Quantar_Bridge.ini
